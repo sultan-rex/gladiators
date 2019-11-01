@@ -24,7 +24,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+	    return view('newTransaction', ['from' => [1,2,3]]);
     }
 
     /**
@@ -35,7 +35,14 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    $transaction = new Transaction();
+	    $transaction->origin_cust_id = $request->get('origin_cust_id');
+	    $transaction->beneficiary_id = $request->get('beneficiary_id');
+	    $transaction->type = 'Debit';
+	    $transaction->amount = $request->get('amount');
+	    $transaction->comments = $request->get('comments');
+	    $transaction->mode_payment = $request->get('mode_payment');
+	    return $transaction->getId();
     }
 
     /**
