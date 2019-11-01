@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+<div class="container mt-5p">
+<h3>Account Details</h3>
+<div class="row">
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav">
+  <li class="nav-item">
+      <a class="nav-link active" href="/customer-deatils">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/customer-deatils">Account Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/transaction/create">Transfer</a>
+    </li>
+
+  </ul>
+</nav>
+
+
+</div>
 
 <html>
 <title>Fund Transfer</title>

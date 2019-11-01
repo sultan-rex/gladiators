@@ -49,6 +49,7 @@ class TransactionController extends Controller
 	    $transaction->comments = $request->get('comments');
 	    $transaction->mode_payment = $request->get('mode_payment');
 	    $transaction->save();
+	    return redirect('transaction/create');
 	    return $transaction->id;
 	 //   redirect()->route('home');
     }
