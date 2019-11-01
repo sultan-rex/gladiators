@@ -8,28 +8,41 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="" method="POST">
-  
+<form action="/transaction" method="POST">
+ {{ csrf_field() }}
   <div class="container">
   
 <div class="border">
 <h1>Fund Transfer</h1>  
 <div class="error-msg"><span id="erroralert"></span></div> 
 <div class="row">
-<div class="col-md-offset-3 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12 col-12">
+<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12 col-12">
     <label for="originalaccount"><b>Original Account</b></label><br>
-    <input type="text" placeholder="Enter Original Account" name="originalaccount" id="originalaccount">
+    <select name="origin_cust_id" id="destinationaccount" class="form-control">
+         @foreach($from_account as $account){
+                <option>{{ $account['account_number'] }}</option>
+        @endforeach
+        </select>
 </div>
 </div>
 
 <div class="row">
 <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12 col-12">
     <label for="destinationaccount"><b>Destination Account</b></label><br>
-    <select name="destinationaccount" id="destinationaccount" class="form-control">
+    <select name="beneficiary_id" id="destinationaccount" class="form-control">
 	 @foreach($to_account as $account){
-		<option>{{ $account['account_number'] }} ({{$account['name']}})</option>
+		<option value="{{ $account['account_number'] }}">{{ $account['account_number'] }} ({{$account['name']}})</option>
 	@endforeach
 	</select>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12 col-12">
+    <label for="destinationaccount"><b>Mode</b></label><br>
+    <select name="mode_payment" id="destinationaccount" class="form-control">
+	<option>NEFT</option>	<option>IMPS</option><option>INTERNAL</option>
+</select>
 </div>
 </div>
 
@@ -57,43 +70,24 @@
 <script>
 $( document ).ready(function(){
 $("#submit").click(function(e){
-e.preventDefault();
 var originalaccount=$("#originalaccount").val();
 var destinationaccount=$("#destinationaccount").val();
 var amount=$("#amount").val();
 var comments=$("#comments").val();
 if(originalaccount==""){
-$("#erroralert").html("Enter Original Account").css("color","red");
-return false;
+	$("#erroralert").html("Enter Original Account").css("color","red");
+	e.preventDefault();
 }
 if(destinationaccount==""){
 $("#erroralert").html("Choose Destination Account").css("color","red");
-return false;
+	e.preventDefault();
 }
 if(amount==""){
 $("#erroralert").html("Enter Amount").css("color","red");
-return false;
+	e.preventDefault();
 }
 
 
-$.ajax({
-type:"POST",
-url: "login.php",
-dataType:"JSON",
-data:{originalaccount:originalaccount,destinationaccount:destinationaccount,amount:amount,comments:comments},
- success: function(result){
-    if(result.response=='00'){
-	window.location.href="";
-	}
-	else{
-	$("#erroralert").html(result.data).css("color","red");
-	}
-  },
-  error:function(xhr,error,status){
-  alert(xhr.responseText);
-  },
-  async:false
-  });
 
 
 });

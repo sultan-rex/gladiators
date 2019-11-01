@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use App\Beneficiary;
+use App\CustomerDetail;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -26,6 +27,8 @@ class TransactionController extends Controller
     public function create()
     {
 	    $beneficiery = new Beneficiary();
+	    $customer = new CustomerDetail();
+	    $data['from_account'] = $customer->where('id', '=', 1)->get();
 	    $data['to_account'] = $beneficiery->where('customer_id', '=', 1)->get();
 	    return view('customer/fund_transfer', $data);
     }
@@ -45,7 +48,9 @@ class TransactionController extends Controller
 	    $transaction->amount = $request->get('amount');
 	    $transaction->comments = $request->get('comments');
 	    $transaction->mode_payment = $request->get('mode_payment');
-	    return $transaction->getId();
+	    $transaction->save();
+	    return $transaction->id;
+	 //   redirect()->route('home');
     }
 
     /**
