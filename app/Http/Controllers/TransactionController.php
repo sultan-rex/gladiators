@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Beneficiary;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -24,6 +25,9 @@ class TransactionController extends Controller
      */
     public function create()
     {
+	    $beneficiery = new Beneficiary();
+	return $beneficiery->get();
+	    exit;
 	    return view('newTransaction', ['from' => [1,2,3]]);
     }
 
