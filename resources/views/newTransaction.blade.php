@@ -5,7 +5,9 @@
 			</select></td>
 		</tr>
 		<tr><th>To Account</th><td><select name="beneficiary_id">
-			<option>987654321</option>
+			@foreach($to_account as $account){
+				<option>{{ $account['account_number'] }} ({{$account['name']}})</option>
+			@endforeach
 			</select></td>
 		</tr>
 		<tr><th>Amount</th>

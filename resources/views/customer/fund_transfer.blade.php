@@ -26,11 +26,9 @@
 <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12 col-12">
     <label for="destinationaccount"><b>Destination Account</b></label><br>
     <select name="destinationaccount" id="destinationaccount" class="form-control">
-	<option value="">Select destination Account</option>
-	<option value="1">1234567890</option>
-	<option value="2">1000200300</option>
-	<option value="3">4000500060</option>
-	<option value="4">6000700070</option>
+	 @foreach($to_account as $account){
+		<option>{{ $account['account_number'] }} ({{$account['name']}})</option>
+	@endforeach
 	</select>
 </div>
 </div>
@@ -103,3 +101,109 @@ data:{originalaccount:originalaccount,destinationaccount:destinationaccount,amou
 </script>
 </body>
 </div>
+
+
+<style>
+
+form {
+  border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+  width:75%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  text-align:center;
+  
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+.error-msg{
+color:red;
+font-weight:bold;
+font-size:14px;
+text-align:center;
+}
+.btn-center{
+text-align:center;
+}
+.border{
+border:1px solid #ccc;
+padding:10px;
+}
+.summary{
+border:1px solid #ccc;
+padding:10px 25px;
+font-weight:400;
+font-size:18px;
+}
+.summary span{
+	margin-left:10px;
+	font-weight:500;
+}
+
+h1{
+text-align:center;
+font-weight:bold;
+}
+.mt-5p{
+	margin-top:5%;
+}
+.table-align{
+margin-top:30px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
+
+
+
+</style>

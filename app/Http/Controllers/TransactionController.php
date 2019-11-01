@@ -26,9 +26,8 @@ class TransactionController extends Controller
     public function create()
     {
 	    $beneficiery = new Beneficiary();
-	return $beneficiery->get();
-	    exit;
-	    return view('newTransaction', ['from' => [1,2,3]]);
+	    $data['to_account'] = $beneficiery->where('customer_id', '=', 1)->get();
+	    return view('customer/fund_transfer', $data);
     }
 
     /**
