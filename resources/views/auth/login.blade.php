@@ -7,8 +7,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="" method="POST">
-  
+<form action="{{action('CustomerController@postLogin')}}" method="POST">
+  {{ csrf_field() }}
   <div class="container">
   
 <div class="border">
@@ -36,43 +36,5 @@
   </div>
 
 </form>
-<script>
-$( document ).ready(function(){
-$("#submit").click(function(e){
-e.preventDefault();
-var username=$("#uname").val();
-var password=$("#psw").val();
-if(username==""){
-$("#erroralert").html("Enter Customer id").css("color","red");
-return false;
-}
-if(password==""){
-$("#erroralert").html("Enter Password").css("color","red");
-return false;
-}
-
-$.ajax({
-type:"POST",
-url: "login.php",
-dataType:"JSON",
-data:{username:username,password:password},
- success: function(result){
-    if(result.response=='00'){
-	window.location.href="";
-	}
-	else{
-	$("#erroralert").html(result.data).css("color","red");
-	}
-  },
-  error:function(xhr,error,status){
-  alert(xhr.responseText);
-  },
-  async:false
-  });
-
-
-});
-});
-</script>
 </body>
 </div>
