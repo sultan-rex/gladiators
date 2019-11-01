@@ -18,10 +18,10 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav">
   <li class="nav-item">
-      <a class="nav-link active" href="/customer-deatils">Home</a>
+      <a class="nav-link active" href="/customer-details">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/customer-deatils">Account Details</a>
+      <a class="nav-link" href="/customer-details">Account Details</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/transaction/create">Transfer</a>
