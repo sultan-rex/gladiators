@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
+Route::get('/', 'CustomerController@getLogin');
 Route::get('/login', 'CustomerController@getLogin');
 Route::post('/login', 'CustomerController@postLogin');
-Route::get('/customer-deatils', 'CustomerController@customerDeatils');
+Route::get('/customer-details', 'CustomerController@customerDetails');
 
 Route::resource('/transaction', 'TransactionController');
